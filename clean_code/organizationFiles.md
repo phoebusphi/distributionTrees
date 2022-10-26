@@ -4,7 +4,6 @@ El programa esta dividido de la siguiente manera:
 
 - NSAGII
 - Genetico (reforestación)
-- Simulación de los arboles que pueden sobrevivir
 - Clasificador
 - lectura de bases de datos
 
