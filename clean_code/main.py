@@ -26,9 +26,13 @@ if __name__ == '__main__':
     method2station = {1:{'interpolation':['CAM']}}
     df = pd.read_csv("/home/phoebus/Documents/code_tesis/files/pollutants2018.csv")
     df.dateUTCShiftedDown = pd.to_datetime(df.dateUTCShiftedDown)
-    value = interpolation.Interpolation(station =method2station[1]["interpolation"][0] ,month = 1, 
-                                        df = df[(df.dateUTCShiftedDown.dt.month == 1)&
-                                                (df.id_station_id == method2station[1]["interpolation"][0])&
-                                                (df.dateUTCShiftedDown.dt.hour.between(6,22))])
-    value.filter_data()
+    df = df[(df.dateUTCShiftedDown.dt.month == 1)&
+            (df.id_station_id == method2station[1]["interpolation"][0])&
+            (df.dateUTCShiftedDown.dt.hour.between(6,22))]
+    value = interpolation.Interpolation(df = df)
+    value.spline_fill()
+    ## Bootstrap
+    ## Interpolation
+    ## Duplicate
+
     ## filter information return dict. Dict has month -> method -> station
